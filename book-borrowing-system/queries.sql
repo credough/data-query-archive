@@ -1,5 +1,4 @@
 -- Basic SQL Queries for Practice
-
 -- Select all books
 SELECT * FROM Books;
 

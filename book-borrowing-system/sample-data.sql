@@ -1,30 +1,15 @@
--- Basic SQL Queries for Practice
+-- Sample Data for Book Borrowing System
 
--- Select all books
-SELECT * FROM Books;
+INSERT INTO Books (title, author, year_published) VALUES
+('The Great Gatsby', 'F. Scott Fitzgerald', 1925),
+('To Kill a Mockingbird', 'Harper Lee', 1960),
+('1984', 'George Orwell', 1949);
 
--- Select borrowers who returned books
-SELECT * FROM Loans
-WHERE date_returned IS NOT NULL;
+INSERT INTO Borrowers (name, email) VALUES
+('Aaron Celindro', 'aaron@mail.com'),
+('Kanye West', 'ye@mail.com'),
+('Nick Fuentes', 'nick@mail.com');
 
--- Select books borrowed by a specific person
-SELECT B.title, R.name, L.date_borrowed
-FROM Loans L
-JOIN Books B ON L.book_id = B.book_id
-JOIN Borrowers R ON L.borrower_id = R.borrower_id
-WHERE R.name = 'Aaron Celindro';
-
--- Update a book title
-UPDATE Books
-SET title = 'The Great Gatsby (Updated)'
-WHERE book_id = 1;
-
--- Delete a borrower
-DELETE FROM Borrowers
-WHERE borrower_id = 3;
-
--- Join: All loans with names and book titles
-SELECT L.loan_id, B.title, R.name, L.date_borrowed, L.date_returned
-FROM Loans L
-JOIN Books B ON L.book_id = B.book_id
-JOIN Borrowers R ON L.borrower_id = R.borrower_id;
+INSERT INTO Loans (book_id, borrower_id, date_borrowed, date_returned) VALUES
+(1, 1, '2025-01-01', NULL),
+(2, 2, '2025-01-03', '2025-01-10');
